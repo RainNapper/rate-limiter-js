@@ -1,15 +1,17 @@
 # rate-limiter-js
 Node 14 + yarn.
 
-Option 1:
+Impl 1:
 Local + "Complete" rate limiter (`yarn local` after you update import in `src/main/local/index.ts`)
 - Holds every request needed to calculate exactly when it can make another request
 - Struggles to scale for large rate limits (>30k / interval)
 
+Impl 2:
 Local + "Bucket" rate limiter (`yarn local`)
 - Splits rate limit into constant number of buckets
 - Accuracy is dropped to granularity of the bucket size.
 
+Impl 3:
 Distro + fixed rate limiter (`yarn distro`)
 - Sacrifices peak throughput for easier scalability
 - Workers can work on different machines
